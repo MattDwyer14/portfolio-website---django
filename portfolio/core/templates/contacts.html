@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matthew Dwyer - Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="images/site.webmanifest">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <h1 class="logo"><a href="index.html">Matthew Dwyer</a></h1>
+            <button class="menu-toggle">Menu</button> <!-- Toggle button for mobile -->
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>            
+        </div>
+    </nav>
+
+    <main>
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2>Contact Me</h2>
+                <p>Email: <a href="mailto:dwyermatthew760@gmail.com">dwyermatthew760@gmail.com</a></p>
+                <p>Phone: <a href="tel:07446170043">07446 170043</a></p>
+                <p>LinkedIn: <a href="https://linkedin.com/in/matthew-dwyer14/" target="_blank">linkedin.com/in/matthew-dwyer14/</a></p>
+                <p>GitHub: <a href="https://github.com/MattDwyer14" target="_blank">https://github.com/MattDwyer14</a></p>
+            </div>
+        </section>
+    </main>
+
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>&copy; <span id="year"></span> Matthew Dwyer</p>
+    </div>
+</footer>
+<script src="script.js"></script>
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
