@@ -1,0 +1,77 @@
+:root {
+    --primary-color: #191970;
+    --secondary-color: white;
+    --background-color: #F5F5F5;
+    --font-main: "Lucida Console", Monaco, monospace;
+    --padding: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--background-color);
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}   
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 10px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    color: var(--secondary-color);
+}
+
+.logo a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.nav-link {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-link a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.nav-link a:hover {
+    background-color: #2980b9; /* Change background on hover */
+}
+
+main {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
