@@ -20,6 +20,11 @@
         <section id="contact">
             <div class="contact-container">
                 <h2>Contact Me</h2>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Send</button>
+                    </form>
                 <p>Email: <a href="mailto:dwyermatthew760@gmail.com">dwyermatthew760@gmail.com</a></p>
                 <p>Phone: <a href="tel:07446170043">07446 170043</a></p>
                 <p>LinkedIn: <a href="https://linkedin.com/in/matthew-dwyer14/" target="_blank">linkedin.com/in/matthew-dwyer14/</a></p>
@@ -32,7 +37,6 @@
         <p>&copy; <span id="year"></span> Matthew Dwyer</p>
     </div>
 </footer>
-<script src="script.js"></script>
 <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 </script>
