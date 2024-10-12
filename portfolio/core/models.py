@@ -19,8 +19,13 @@ class contactMessage(models.Model):
         return f"Message from {self.name} ({self.email})"
 
 class HomePageContent(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, null=True, blank=True)
+    note = models.CharField(max_length=200, null=True, blank=True)
     body = models.TextField()
+    position = models.PositiveIntegerField()
 
     def __str__(self):
-        return self.title
+        return self.title if self.title else 'No Title'
+    
+    class Meta:
+        ordering = ['position']

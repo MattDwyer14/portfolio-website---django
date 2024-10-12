@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import contact_form
+from .models import HomePageContent
 
 def home(request):
-    return render(request, 'core/home.html')
+    content = HomePageContent.objects.all()
+    return render(request, 'core/home.html', {'content': content})
 
 def education(request):
     return render(request, 'core/education.html')

@@ -21,21 +21,14 @@
     <main>
         <section id="home">
             <div class="home-container">
-                <div class="text">
-                    <h1>About Me</h1>
-                    <p>Hi, I’m Matthew Dwyer, a Data Engineer with a passion for turning data into actionable insights.</p> 
-                    <p>I graduated with an MSci in Mathematical Physics from the University of Nottingham, which has given me a solid foundation in analytical thinking and problem-solving. 
-                        Currently based in London, I’m always looking to expand my knowledge in Data Engineering, Machine Learning/AI, and Backend Engineering.</p>
-                    <p>With a strong technical background and a love for continuous learning, I’m dedicated to solving complex challenges with innovative data solutions. Outside of work, you’ll often find me exploring the latest in tech, improving my coding skills, or working on personal projects to push my understanding further. Welcome to my personal space on the web, where I’ll be sharing my journey, projects, and what I’ve been learning along the way.</p>
-                    
-                    <h1>What Drives Me</h1>
-                    <p>I’m driven by a desire to constantly learn, evolve, and challenge myself. Whether it’s diving into new projects or mastering new tech, I thrive in environments where growth is not just encouraged but essential.</p>
-                    <p>My background in mathematical physics has instilled in me a fascination with how complex systems work, and this curiosity fuels my work in data engineering and backend development. My goal is to leverage my skills to build innovative solutions that make an impact.</p>
-                    
-                    <h1>Looking Ahead</h1>
-                    <p>As I continue to grow in the fields of data engineering and machine learning, I'm excited to explore new challenges and opportunities. I’m always open to connecting with like-minded individuals and teams who share a passion for innovation and problem-solving.</p>
-                    <p>Feel free to get in touch if you'd like to collaborate or discuss potential opportunities!</p>
-                </div>
+                {% for text in content %}
+                    <article>
+                        {% if text.title %}
+                            <h2>{{ text.title }}</h2>
+                        {% endif %}
+                        <p>{{ text.body }}</p>
+                    </article>
+                {% endfor %}
             </div>
         </section>
     </main>
