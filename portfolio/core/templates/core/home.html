@@ -29,7 +29,7 @@
                         {% if text.title %}
                             <h2>{{ text.title }}</h2>
                         {% endif %}
-                        <p>{{ text.body }}</p>
+                        <p>{{ text.body|linebreaks }}</p>
                     </article>
                 {% endfor %}
             </div>

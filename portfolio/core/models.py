@@ -5,7 +5,6 @@ class contactMessage(models.Model):
         ('general', 'General Enquiry'),
         ('feedback', 'Feedback'),
         ('permanent', 'Hire Me!'),
-        ('contact', 'Contract Work Oppurtunity'),
         ('tutoring', 'Tutoring')
     ]
 
