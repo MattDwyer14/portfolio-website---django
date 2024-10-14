@@ -15,24 +15,21 @@
                 <a href="{% url 'home' %}">Home</a>
                 <a href="{% url 'education' %}">Education</a>
                 <a href="{% url 'contact' %}">Contact</a>
-                <a href="{% url 'projects' %}">Projects</a>
             </div>
         </div>
     </nav>
     <main>
-        <div class="home-content">
-            <div class="home-image">
-                <img src="{% static '\core\images\profile photo.jpg' %}" alt="Me!">
+        <div class="projects-page">
+            <div class="project-filter">
+                <button class="sort-button">
+                    <span>Sort</span>
+                </button>
+                <button class="filter-button">
+                    <span>Filter</span>
+                </button>
             </div>
-            <div class="home-text-container">
-                {% for text in content %}
-                    <article>
-                        {% if text.title %}
-                            <h2>{{ text.title }}</h2>
-                        {% endif %}
-                        <p>{{ text.body|linebreaks }}</p>
-                    </article>
-                {% endfor %}
+            <div class="projects-window">
+
             </div>
         </div>
     </main>
