@@ -13,6 +13,7 @@
             <h1 class="logo"><a href="{% url 'home' %}">Matthew Dwyer</a></h1>
             <div class="nav-link">
                 <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'projects:base' %}">Projects</a>
                 <a href="{% url 'education' %}">Education</a>
                 <a href="{% url 'contact' %}">Contact</a>
             </div>
@@ -20,15 +21,10 @@
     </nav>
     <main>
         <div class="projects-page">
-            <div class="project-filter">
-                <button class="sort-button">
-                    <span>Sort</span>
-                </button>
-                <button class="filter-button">
-                    <span>Filter</span>
-                </button>
+            <div class="projects-list">
+                
             </div>
-            <div class="projects-window">
+            <div class="projects-detail">
 
             </div>
         </div>
