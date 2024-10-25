@@ -19,8 +19,9 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ("title", "description", "technologies__name")
     prepopulated_fields = {"slug": ("title",)}
     ordering = ("-created",)
-    readonly_fields = ("created", "updated")
-    
+    readonly_fields = ("updated",)
+    filter_horizontal = ("technologies",)  # Enables a searchable dropdown for the many-to-many field
+
     def technology_list(self, obj):
         return obj.technology_list()
     technology_list.short_description = "Technologies Used"

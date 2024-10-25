@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.utils.text import slugify
 
 class TechnologyType(models.Model):
@@ -24,7 +25,7 @@ class Project(models.Model):
     slug = models.SlugField(max_length=250, unique=True, blank=True, verbose_name="URL Slug")
     link = models.URLField(help_text="Enter a link to the project or repository.")
     description = models.TextField(verbose_name="Project Description")
-    created = models.DateTimeField(auto_now_add=True, verbose_name="Date Created")
+    created = models.DateTimeField(default=timezone.now, verbose_name="Date Created", editable=True)  # Set default and editable
     updated = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
     image = models.ImageField(
         upload_to='images/',
