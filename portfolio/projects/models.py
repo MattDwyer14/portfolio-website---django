@@ -23,9 +23,13 @@ class Technology(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length=200, verbose_name="Project Title")
     slug = models.SlugField(max_length=250, unique=True, blank=True, verbose_name="URL Slug")
-    link = models.URLField(help_text="Enter a link to the project or repository.")
+    link = models.URLField(
+        help_text="Enter a link to the project or repository.",
+        blank=True,  # Makes the link field optional
+        null=True
+    )
     description = models.TextField(verbose_name="Project Description")
-    created = models.DateTimeField(default=timezone.now, verbose_name="Date Created", editable=True)  # Set default and editable
+    created = models.DateTimeField(default=timezone.now, verbose_name="Date Created", editable=True)
     updated = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
     image = models.ImageField(
         upload_to='images/',
@@ -33,6 +37,13 @@ class Project(models.Model):
         null=True,
         help_text="Upload an image for the project.",
         verbose_name="Project Image"
+    )
+    file = models.FileField(
+        upload_to='files/',
+        blank=True,
+        null=True,
+        help_text="Upload a file related to the project.",
+        verbose_name="Project File"
     )
     technologies = models.ManyToManyField(Technology, related_name="projects", verbose_name="Technologies Used")
 
