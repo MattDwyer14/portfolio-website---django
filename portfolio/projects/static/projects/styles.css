@@ -130,13 +130,19 @@ body {
 }
 
 .project-detail a {
+    display: inline-block;
     text-decoration: none;
     color: var(--font-color);
-    padding: 10px 10px;
+    padding: 7px 7px;
     border-radius: 8px;
     background-color: var(--primary-color);
-    margin-top: 30px;
-    margin-bottom:30px;
+    margin-bottom: 5px;
+}
+
+.project-detail h3 {
+    font-size: 17px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .project-detail a:hover {
