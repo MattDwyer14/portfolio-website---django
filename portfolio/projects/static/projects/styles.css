@@ -78,6 +78,13 @@ body {
     padding: 20px;
 }
 
+.project-card h3 {
+    margin-top: 5px;
+    margin-bottom: 7px;
+    color: inherit;
+    font-size: 1.5em;
+}
+
 /* Project card styling */
 .project-card {
     display: block; /* Makes the entire anchor act like a block */
@@ -113,6 +120,27 @@ body {
     height: auto;
     border-radius: 8px;
     margin-bottom: 12px;
+}
+
+.project-detail img {
+    width: 50% !important;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.project-detail a {
+    text-decoration: none;
+    color: var(--font-color);
+    padding: 10px 10px;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    margin-top: 30px;
+    margin-bottom:30px;
+}
+
+.project-detail a:hover {
+    background-color: var(--hover-color);
 }
 
 @media (max-width: 768px) {
