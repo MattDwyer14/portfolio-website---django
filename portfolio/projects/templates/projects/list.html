@@ -5,15 +5,14 @@
     <h2>My Projects</h2>
     <div class="projects-grid">
         {% for project in projects %}
-            <div class="project-card">
+            <a href="{% url 'projects:detail' project.slug %}" class="project-card">
                 <h3>{{ project.title }}</h3>
                 {% if project.image %}
                     <img src="{{ project.image.url }}" alt="Project Image">
                 {% endif %}
-                <p>{{ project.description|truncatewords:30 }}</p>
-                <a href="{% url 'projects:detail' project.slug %}">View Details</a>
-            </div>
+                <p>{{ project.description|truncatewords:50 }}</p>
+            </a>
         {% endfor %}
-    </div>
+    </div>    
 </div>
 {% endblock %}
