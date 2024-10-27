@@ -1,8 +1,24 @@
 {% extends 'projects/base.html' %}
-
+{% load static %}
 {% block content %}
 <div class="projects-container">
     <h2>My Projects</h2>
+    <form method="get" action="{% url 'projects:list' %}">
+        <label for="technologies">Filter:</label>
+        <button type="button" onclick="toggleDropdown()">Technologies</button>
+        <div id="dropdown-container" style="display: none;">
+            {% for tech in technologies %}
+                <label class="checkbox-option">
+                    <input type="checkbox" name="technologies" value="{{ tech.name }}" 
+                           {% if tech.name in selected_techs %}checked{% endif %}>
+                    {{ tech.name }} ({{ tech.project_count }})
+                </label>
+            {% endfor %}
+        </div>
+        
+        <button type="submit">Filter</button>
+        <button type="button" onclick="resetSelection()">Reset</button>
+    </form>
     <div class="projects-grid">
         {% for project in projects %}
             <a href="{% url 'projects:detail' project.slug %}" class="project-card">
@@ -16,4 +32,13 @@
         {% endfor %}
     </div>    
 </div>
+<script src="{% static 'projects/js/script.js' %}" defer></script>
+<script>
+    function resetSelection() {
+        const checkboxes = document.querySelectorAll('#dropdown-container input[type="checkbox"]');
+        checkboxes.forEach(checkbox => checkbox.checked = false);
+
+        window.location.href = "{% url 'projects:list' %}";
+    }
+</script>
 {% endblock %}

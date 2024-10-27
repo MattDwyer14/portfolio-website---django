@@ -149,6 +149,70 @@ body {
     background-color: var(--hover-color);
 }
 
+ /* fitler options */
+
+ button {
+    font-family: var(--font-main);
+    color: var(--font-color);
+    background-color: var(--primary-color);
+    border: 1px solid var(--secondary-color);
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+}
+
+#dropdown-container {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    z-index: 1000;
+    background-color: var(--background-color);
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    color: var(--font-color);
+}
+
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    font-family: var(--font-main);
+    color: var(--font-color);
+}
+
+.checkbox-option input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: var(--secondary-color);
+}
+
+form {
+    position: relative;
+}
+
+button[type="submit"],
+button[type="button"]:last-of-type {
+    background-color: var(--background-color);
+    color: var(--font-color);
+    border: 1px solid var(--hover-color);
+}
+
+button[type="submit"]:hover,
+button[type="button"]:last-of-type:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+}
+
 @media (max-width: 768px) {
  
 }
