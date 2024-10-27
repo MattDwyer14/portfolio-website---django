@@ -3,7 +3,6 @@ from django.db.models import Count
 from .models import Project, Technology
 
 def project_list(request):
-    # Get technologies used in projects and count usage
     technologies = Technology.objects.filter(projects__isnull=False) \
                                       .annotate(project_count=Count('projects')) \
                                       .order_by('name')
