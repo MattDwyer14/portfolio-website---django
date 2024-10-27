@@ -56,7 +56,7 @@ strong {
 }
 
 .nav-link a:hover {
-    background-color: var(--hover-color); /* Change background on hover */
+    background-color: var(--hover-color);
 }
 
 main {
@@ -97,10 +97,10 @@ body {
 
 .home-text-container {
     flex: 3;
-    background-color: var(--primary-color); /* Background with --primary-color */
-    padding: 15px; /* Padding within the text box */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+    background-color: var(--primary-color);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 
