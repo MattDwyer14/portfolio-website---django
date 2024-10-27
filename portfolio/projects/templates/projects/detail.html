@@ -10,7 +10,7 @@
     <h3><strong>Created: {{ project.created }} </strong></h3>
     <h3><strong>Last Updated: {{ project.updated }}</strong></h3>
     <p>------------------------------</p>
-    <p>{{ project.description }}</p>
+    <p>{{ project.description|linebreaks}}</p>
     <p><strong>Technologies Used:</strong> {{ project.technology_list }}</p>
     <p>------------------------------</p>
     {% if project.file %}

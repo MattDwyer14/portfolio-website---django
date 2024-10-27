@@ -84,7 +84,7 @@ body {
 
 .home-image {
     flex: 1;
-    max-width: 300px; /* Adjust as needed */
+    max-width: 300px;
     width: 100%;
 }
 
@@ -97,7 +97,12 @@ body {
 
 .home-text-container {
     flex: 3;
+    background-color: var(--primary-color); /* Background with --primary-color */
+    padding: 15px; /* Padding within the text box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
 }
+
 
 
 @media (max-width: 768px) {
@@ -117,6 +122,30 @@ body {
 
 /*education section*/
 
+.education-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.education-content {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 5px;
+}
+
+.education-image {
+    width: 500px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.text-content {
+    max-width: 600px;
+    background-color: var(--primary-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 /*contacts section*/
 
