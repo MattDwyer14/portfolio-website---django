@@ -7,6 +7,12 @@ class TechnologyType(models.Model):
 
     def __str__(self):
         return self.name
+    
+class ProjectType(models.Model):
+    name = models.CharField(max_length=50, unique=True, verbose_name="Project Type")
+
+    def __str__(self):
+        return self.name
 
 class Technology(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name="Technology Name")
@@ -25,7 +31,7 @@ class Project(models.Model):
     slug = models.SlugField(max_length=250, unique=True, blank=True, verbose_name="URL Slug")
     link = models.URLField(
         help_text="Enter a link to the project or repository.",
-        blank=True,  # Makes the link field optional
+        blank=True,
         null=True
     )
     description = models.TextField(verbose_name="Project Description")
@@ -46,7 +52,8 @@ class Project(models.Model):
         verbose_name="Project File"
     )
     technologies = models.ManyToManyField(Technology, related_name="projects", verbose_name="Technologies Used")
-
+    projecttype = models.ManyToManyField(ProjectType, related_name="projects", verbose_name="Project Types")
+    
     def __str__(self):
         return self.title
 
