@@ -64,7 +64,7 @@
 }
 
 .nav-link a:hover {
-    background-color: var(--hover-color); /* Change background on hover */
+    background-color: var(--hover-color);
 }
 
 main {
