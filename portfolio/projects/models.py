@@ -65,6 +65,10 @@ class Project(models.Model):
     def technology_list(self):
         """Returns a comma-separated list of technologies used in this project."""
         return ", ".join(tech.name for tech in self.technologies.all())
+    
+    def type_list(self):
+        """Returns a comma-separated list of all project categories project falls under."""
+        return ", ".join(type.name for type in self.projecttype.all())
 
     class Meta:
         ordering = ["-created"]

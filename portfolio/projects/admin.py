@@ -1,8 +1,13 @@
 from django.contrib import admin
-from .models import TechnologyType, Technology, Project
+from .models import TechnologyType, ProjectType, Technology, Project
 
 @admin.register(TechnologyType)
 class TechnologyTypeAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+    search_fields = ("name",)
+
+@admin.register(ProjectType)
+class ProjectTypeAdmin(admin.ModelAdmin):
     list_display = ("name",)
     search_fields = ("name",)
 
@@ -20,7 +25,7 @@ class ProjectAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     ordering = ("-created",)
     readonly_fields = ("updated",)
-    filter_horizontal = ("technologies",)  # Enables a searchable dropdown for the many-to-many field
+    filter_horizontal = ("technologies", "projecttype")
 
     def technology_list(self, obj):
         return obj.technology_list()

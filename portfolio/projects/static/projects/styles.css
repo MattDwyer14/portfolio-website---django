@@ -25,6 +25,21 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Hamburger icon styling */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+}
+
 .logo {
     color: var(--secondary-color);
 }
@@ -87,27 +102,25 @@ body {
 
 /* Project card styling */
 .project-card {
-    display: block; /* Makes the entire anchor act like a block */
+    display: block; 
     background-color: var(--primary-color);
     border: 2px solid var(--secondary-color);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    padding: 16px;
-    text-decoration: none; /* Prevents underline on link */
-    color: var(--font-color); /* Ensures consistent text colour */
+    padding: 15px;
+    text-decoration: none;
+    color: var(--font-color);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Remove hover and focus effects on text */
 .project-card:link,
 .project-card:visited,
 .project-card:hover,
 .project-card:focus {
-    text-decoration: none; /* No underline */
-    color: var(--font-color); /* Keeps colour the same on all states */
+    text-decoration: none;
+    color: var(--font-color);
 }
 
-/* Hover effect for the card itself */
 .project-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
@@ -168,7 +181,12 @@ button:hover {
     transform: scale(1.05);
 }
 
-#dropdown-container {
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown {
     display: none;
     position: absolute;
     top: calc(100% + 5px);
@@ -201,20 +219,16 @@ form {
 }
 
 button[type="submit"],
-button[type="button"]:last-of-type {
+button[type="filter"]:last-of-type {
     background-color: var(--background-color);
     color: var(--font-color);
     border: 1px solid var(--hover-color);
 }
 
 button[type="submit"]:hover,
-button[type="button"]:last-of-type:hover {
+button[type="filter"]:last-of-type:hover {
     background-color: var(--hover-color);
     transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
- 
 }
 
 /* footer */
@@ -225,4 +239,37 @@ footer {
     padding: 10px 0;
     margin-top: 20px;
     border-radius: 8px;
+}
+
+/* Media query for mobile */
+@media (max-width: 768px) {
+    .nav-link {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 50px;
+        z-index:100;
+        background: var(--background-color);
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-link.show {
+        display: flex;
+    }
+
+    .project-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .projects-grid {
+        padding: 5px;
+    }
 }
