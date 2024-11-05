@@ -45,8 +45,8 @@
                     <img src="{{ project.image.url }}" alt="Project Image">
                 {% endif %}
                 <p>{{ project.description|truncatewords:50 }}</p>
-                <p><strong>Technologies Used:</strong> {{ project.technology_list }}</p>
-                <p><strong>Project Type:</strong> {{ project.type_list }}</p>
+                <p><strong>- Technologies Used:</strong> {{ project.technology_list }}</p>
+                <p><strong>- Project Type:</strong> {{ project.type_list }}</p>
             </a>
         {% endfor %}
     </div>    
