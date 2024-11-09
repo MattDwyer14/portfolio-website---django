@@ -6,12 +6,30 @@
     --hover-color: #2980b9;
     --font-main: "Lucida Console", Monaco, monospace;
     --padding: 10px;
+    --main-heading: 1.4vw;
+    --nav-link-size: 1.3vw;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+h1 {
+    font-size: 2vw;
+}
+
+h2 {
+    font-size: 1.5vw;
+}
+
+p {
+    font-size: 1vw;
+}
+
+a {
+    font-size: 1.5vw;
 }
 
 .nav-container {
@@ -61,6 +79,7 @@
     color: var(--font-color);
     padding: 5px 10px;
     border-radius: 8px;
+    font-size: var(--nav-link-size);
 }
 
 .nav-link a:hover {
@@ -97,7 +116,7 @@ body {
     margin-top: 5px;
     margin-bottom: 7px;
     color: inherit;
-    font-size: 1.5em;
+    font-size: var(--main-heading);
 }
 
 /* Project card styling */
