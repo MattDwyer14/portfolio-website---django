@@ -14,6 +14,18 @@
     box-sizing: border-box;
 }
 
+h1 {
+    font-size: 2vw;
+}
+
+h2 {
+    font-size: 1.5vw;
+}
+
+p {
+    font-size: 1vw;
+}
+
 .nav-container {
     display: flex;
     justify-content: space-between;
@@ -126,13 +138,13 @@ body {
 }
 
 .education-image {
-    width: 500px;
+    width: 30%;
     margin-right: 20px;
     flex-shrink: 0;
 }
 
 .text-content {
-    max-width: 600px;
+    max-width: 70%;
     background-color: var(--primary-color);
     padding: 30px;
     border-radius: 8px;
@@ -149,11 +161,14 @@ body {
     margin-top: 10px;
 }
 
-/* form */
+/* contacts form */
+
+.contact-container {
+    margin-top: 10px;
+}
 
 form {
-    width: 100%;
-    max-width: 500px;
+    width: 80%;
     margin: 0 auto;
     padding: 20px;
     background-color: var(--primary-color);
@@ -169,7 +184,7 @@ input, select, textarea {
     border-radius: 5px;
     font-family: "Lucida Console", Monaco, monospace;
     font: var(--font-color);
-    font-size: 18px;
+    font-size: 13px;
     box-sizing: border-box;
 }
 
@@ -255,7 +270,7 @@ footer {
     }
 
     .education-image {
-        width: 100%;
+        width: 50%;
         margin: 0 0 20px 0;
     }
 
@@ -263,5 +278,21 @@ footer {
         width: 100%;
         max-width: none;
         padding: 20px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+    
+    h2 {
+        font-size: 15px;
+    }
+    
+    p {
+        font-size: 14px;
+    }
+
+    form {
+        width: 100%;
     }
 }
