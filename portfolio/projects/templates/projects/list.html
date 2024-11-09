@@ -59,7 +59,9 @@
     document.querySelectorAll('.dropdown').forEach(d => d.style.display = 'none');
 
     dropdown.style.display = isDisplayed ? 'none' : 'block';
-}
-
+    }
+    function resetSelection() {
+    document.querySelectorAll("input[type='checkbox']").forEach(checkbox => checkbox.checked = false);
+    }
 </script>
 {% endblock %}
