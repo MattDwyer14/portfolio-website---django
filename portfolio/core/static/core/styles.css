@@ -6,6 +6,8 @@
     --hover-color: #2980b9;
     --font-main: "Lucida Console", Monaco, monospace;
     --padding: 10px;
+    --main-heading: 1.5vw;
+    --nav-link-size: 1.1vw;
 }
 
 * {
@@ -24,6 +26,10 @@ h2 {
 
 p {
     font-size: 1vw;
+}
+
+a {
+    font-size: 1.5vw;
 }
 
 .nav-container {
@@ -73,6 +79,7 @@ p {
     color: var(--font-color);
     padding: 5px 10px;
     border-radius: 8px;
+    font-size: var(--nav-link-size);
 }
 
 .nav-link a:hover {
