@@ -6,8 +6,11 @@
     --hover-color: #2980b9;
     --font-main: "Lucida Console", Monaco, monospace;
     --padding: 10px;
-    --main-heading: 1.5vw;
-    --nav-link-size: 1.1vw;
+    --main-heading: 1.6vw;
+    --nav-link-size: 1.2vw;
+    --page-heading: 1.3vw;
+    --sub-heading: 1.3vw;
+    --paragraph: 1vw;
 }
 
 * {
@@ -16,20 +19,20 @@
     box-sizing: border-box;
 }
 
-h1 {
-    font-size: 2vw;
+h2{
+    font-size: var(--page-heading);
 }
 
-h2 {
-    font-size: 1.5vw;
+h3 {
+    font-size: var(--sub-heading);
 }
 
 p {
-    font-size: 1vw;
+    font-size: var(--paragraph);
 }
 
-a {
-    font-size: 1.5vw;
+li {
+    font-size: var(--paragraph);
 }
 
 .nav-container {
@@ -67,6 +70,7 @@ a {
     color: var(--font-color);
     padding: 5px 10px;
     border-radius: 8px;
+    font-size: var(--main-heading);
 }
 
 .nav-link {
@@ -164,10 +168,6 @@ body {
     margin-top: 50px;
 }
 
-.contact-links p {
-    margin-top: 10px;
-}
-
 /* contacts form */
 
 .contact-container {
@@ -191,7 +191,6 @@ input, select, textarea {
     border-radius: 5px;
     font-family: "Lucida Console", Monaco, monospace;
     font: var(--font-color);
-    font-size: 13px;
     box-sizing: border-box;
 }
 
