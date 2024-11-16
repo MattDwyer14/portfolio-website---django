@@ -10,7 +10,7 @@ if os.path.exists(dotenv_path):
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['mattdwyer.xyz', 'www.mattdwyer.xyz', '*']
 
@@ -107,8 +107,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'core/static/core'),
-    os.path.join(BASE_DIR, 'projects/static/projects'),
+    BASE_DIR / 'core/static/core',
+    BASE_DIR / 'projects/static/projects',
+    BASE_DIR / 'portfolio/static/shared',
 ]
 
 # Default primary key field type
