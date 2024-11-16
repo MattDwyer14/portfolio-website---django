@@ -10,11 +10,9 @@ if os.path.exists(dotenv_path):
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
+DEBUG = False
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['mattdwyer.xyz', 'www.mattdwyer.xyz', '*']
 
 # Application definition
 

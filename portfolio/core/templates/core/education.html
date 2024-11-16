@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Matthew Dwyer - Portfolio</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static '\core\styles.css' %}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static '\core\images\favicon_io\apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static '\core\images\favicon_io\favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static '\core\images\favicon_io\favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static '\core\images\favicon_io\site.webmanifest' %}">
+    <link rel="stylesheet" href="{% static '\core\core_styles.css' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'shared/favicon_io/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'shared/favicon_io/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'shared/favicon_io/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'shared/favicon_io/site.webmanifest' %}">
 </head>
 <body>
     <nav>
@@ -34,14 +34,14 @@
                 <div class="text">
                     <h1><strong>Education</strong></h1>
                     <div class="education-content">
-                        <img src="{% static '\core\images\nottingham-university-logo.png' %}" alt="University of Nottingham" class="education-image">
+                        <img src="{% static '\shared\images\nottingham-university-logo.png' %}" alt="University of Nottingham" class="education-image">
                         <div class="text-content">
                             <h3>MSci in Mathematical Physics</h3>
                             <ul>
                                 <li><strong>University of Nottingham</strong> (2019-2023)</li>
                                 <p><strong>Modules Included:</strong> Programming, Linear Mathematics, Vector Calculus, Modelling with Differential Equations, Fourier Analysis, Atmospheric Physics, Relativity, Quantum Field Theory, and Advanced Gravity.</p>
                                 <li><strong>Master's Thesis:</strong> "Bigravity Braneworlds"</li>
-                                <a href="{% static '\core\files\Bigravity_Braneworlds.pdf' %}">Read it here!</a>
+                                <a href="{% static '\shared\files\Bigravity_Braneworlds.pdf' %}">Read it here!</a>
                                 <p>The Randall-Sundrum 1 braneworld scenario is a model proposed in 1999 that models our universe as a surface embedded within a higher dimensional space known as the bulk. The model provides a solution to the hierarchy problem, a long-standing question in physics that asks, why is the force of gravity so weak when compared to the other fundamental forces? In our paper, we propose a variation of the RS1 model with a "bimetric" gravity framework. This is a model of a universe that has two "gravitons", one massive and one massless, mediating the force of gravity that also has potential implications for the cosmological constant problem.</p>
                             </ul>
                         </div>
