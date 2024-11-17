@@ -4,15 +4,26 @@ from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-dotenv_path = os.path.join(os.path.dirname(__file__), '.env.secrets')
-if os.path.exists(dotenv_path):
-    load_dotenv(dotenv_path)
+# Only load .env.secrets in local development
+if os.getenv('AZURE_DEPLOYMENT') != 'true':
+    dotenv_path = os.path.join(os.path.dirname(__file__), '.env.secrets')
+    if os.path.exists(dotenv_path):
+        load_dotenv(dotenv_path)
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+# Fetch variables from environment
+SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key')  # Add fallback for local dev
 
-DEBUG = True
+# Toggle DEBUG based on environment
+if os.getenv('AZURE_DEPLOYMENT') == 'true':
+    DEBUG = False  # Always disable debug in production
+else:
+    DEBUG = True  # Enable debug in development
 
-ALLOWED_HOSTS = ['mattdwyer.xyz', 'www.mattdwyer.xyz', '*']
+# ALLOWED_HOSTS toggle based on environment
+if os.getenv('AZURE_DEPLOYMENT') == 'true':
+    ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
+else:
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -61,12 +72,27 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if os.getenv('AZURE_DEPLOYMENT') == 'true':
+    # Use PostgreSQL on Azure in production
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'HOST': os.getenv('DB_HOST'),
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('DB_PASSWORD'),
+            'PORT': os.getenv('DB_PORT', '5432'),
+        }
     }
-}
+else:
+    # Use SQLite in development
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
 
 
 # Password validation
@@ -103,13 +129,25 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+if os.getenv('AZURE_DEPLOYMENT') == 'true':
+    # Use Azure Storage for static files
+    DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+    STATICFILES_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'core/static/core',
-    BASE_DIR / 'projects/static/projects',
-]
+    # Azure Blob Storage settings
+    AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME')  # Storage account name
+    AZURE_ACCOUNT_KEY = os.getenv('AZURE_ACCOUNT_KEY')    # Storage account key
+    AZURE_CONTAINER = os.getenv('AZURE_CONTAINER')        # Container name (e.g., 'static')
+    STATIC_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINER}/"
+else:
+    # Development (local static files)
+    STATIC_URL = '/static/'
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+    STATICFILES_DIRS = [
+        BASE_DIR / 'core/static/core',
+        BASE_DIR / 'projects/static/projects',
+    ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -133,7 +171,12 @@ DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST')
 
 #SECURITY SETTINGS
 
-SECURE_SSL_REDIRECT = False
+if os.getenv('AZURE_DEPLOYMENT') == 'true':
+    # Production: Fetch from environment variables
+    SECURE_SSL_REDIRECT = True
+else:
+    # Development: Allow local requests
+    SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 31536000  # 1 year
