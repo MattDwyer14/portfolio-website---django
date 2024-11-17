@@ -1,0 +1,24 @@
+{% extends 'projects/base.html' %}
+
+{% block content %}
+<div class="project-detail">
+    <a href="{% url 'projects:list' %}">Projects</a>
+    <h2>{{ project.title }}</h2>
+    {% if project.image %}
+    <img src="{{ project.image.url }}" alt="{{ project.title }}">
+    {% endif %}
+    <h3><strong>Created: {{ project.created }} </strong></h3>
+    <h3><strong>Last Updated: {{ project.updated }}</strong></h3>
+    <p>------------------------------</p>
+    <p>{{ project.description|linebreaks}}</p>
+    <p><strong> - Technologies Used:</strong> {{ project.technology_list }}</p>
+    <p><strong> - Project Type:</strong> {{ project.type_list }}</p>
+    <p>------------------------------</p>
+    {% if project.file %}
+        <a href="{{ project.file.url }}" target="_blank">Download File</a>
+    {% endif %}
+    {% if project.link %}
+        <a href="{{ project.link }}" target="_blank">View Code</a>
+    {% endif %}
+</div>
+{% endblock %}
