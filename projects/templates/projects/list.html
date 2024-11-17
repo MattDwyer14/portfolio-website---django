@@ -1,0 +1,67 @@
+{% extends 'projects/base.html' %}
+{% load static %}
+{% block content %}
+<div class="projects-container">
+    <h2>My Projects</h2>
+    <form method="get" action="{% url 'projects:list' %}">
+        <label for="technologies">Filter:</label>
+    
+        <div class="dropdown-container">
+            <button type="button" onclick="toggleDropdown('tech-dropdown')">Technologies</button>
+            <div id="tech-dropdown" class="dropdown" style="display: none;">
+                {% for tech in technologies %}
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="technologies" value="{{ tech.name }}" 
+                               {% if tech.name in selected_techs %}checked{% endif %}>
+                        {{ tech.name }} ({{ tech.project_count }})
+                    </label>
+                {% endfor %}
+            </div>
+        </div>
+    
+        <div class="dropdown-container">
+            <button type="button" onclick="toggleDropdown('type-dropdown')">Type</button>
+            <div id="type-dropdown" class="dropdown" style="display: none;">
+                {% for type in projecttype %}
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="projecttype" value="{{ type.name }}" 
+                               {% if type.name in selected_types %}checked{% endif %}>
+                        {{ type.name }} ({{ type.project_count }})
+                    </label>
+                {% endfor %}
+            </div>
+        </div>
+    
+        <button type="submit">Filter</button>
+        <button type="filter" onclick="resetSelection()">Reset</button>
+    </form>
+    
+
+    <div class="projects-grid">
+        {% for project in projects %}
+            <a href="{% url 'projects:detail' project.slug %}" class="project-card">
+                <h3>{{ project.title }} - {{ project.created }}</h3>
+                {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="Project Image">
+                {% endif %}
+                <p>{{ project.description|truncatewords:100 }}</p>
+                <p><strong>- Technologies Used:</strong> {{ project.technology_list }}</p>
+                <p><strong>- Project Type:</strong> {{ project.type_list }}</p>
+            </a>
+        {% endfor %}
+    </div>    
+</div>
+<script>
+    function toggleDropdown(dropdownId) {
+    const dropdown = document.getElementById(dropdownId);
+    const isDisplayed = dropdown.style.display === 'block';
+
+    document.querySelectorAll('.dropdown').forEach(d => d.style.display = 'none');
+
+    dropdown.style.display = isDisplayed ? 'none' : 'block';
+    }
+    function resetSelection() {
+    document.querySelectorAll("input[type='checkbox']").forEach(checkbox => checkbox.checked = false);
+    }
+</script>
+{% endblock %}
