@@ -177,7 +177,6 @@ if os.getenv('AZURE_DEPLOYMENT') == 'true':
 else:
     # Development: Allow local requests
     SECURE_SSL_REDIRECT = False
-
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 31536000  # 1 year
