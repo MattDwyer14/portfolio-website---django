@@ -109,7 +109,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / 'core/static/core',
     BASE_DIR / 'projects/static/projects',
-    BASE_DIR / 'portfolio/static/shared',
 ]
 
 # Default primary key field type
@@ -134,7 +133,7 @@ DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST')
 
 #SECURITY SETTINGS
 
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 31536000  # 1 year
