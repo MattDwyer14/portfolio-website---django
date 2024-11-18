@@ -21,9 +21,11 @@ else:
 
 # ALLOWED_HOSTS toggle based on environment
 if os.getenv('AZURE_DEPLOYMENT') == 'true':
-    ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
+    allowed_hosts = os.getenv('ALLOWED_HOSTS', '')
+    ALLOWED_HOSTS = [host.strip() for host in allowed_hosts.split(',') if host]
 else:
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
 
 # Application definition
 
