@@ -11,7 +11,7 @@ if os.getenv('AZURE_DEPLOYMENT') != 'true':
         load_dotenv(dotenv_path)
 
 # Fetch variables from environment
-SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key')  # Add fallback for local dev
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # Toggle DEBUG based on environment
 if os.getenv('AZURE_DEPLOYMENT') == 'true':
