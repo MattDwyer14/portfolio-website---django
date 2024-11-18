@@ -19,12 +19,19 @@ if os.getenv('AZURE_DEPLOYMENT') == 'true':
 else:
     DEBUG = True  # Enable debug in development
 
-# ALLOWED_HOSTS toggle based on environment
-if os.getenv('AZURE_DEPLOYMENT') == 'true':
-    allowed_hosts = os.getenv('ALLOWED_HOSTS', '')
-    ALLOWED_HOSTS = [host.strip() for host in allowed_hosts.split(',') if host]
-else:
-    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
+ALLOWED_HOSTS = [
+    'mattsportfolio-fheabeb7btdaambd.uksouth-01.azurewebsites.net',
+    'mattdwyer.xyz',
+    'www.mattdwyer.xyz'
+]
+
+# # ALLOWED_HOSTS toggle based on environment
+# if os.getenv('AZURE_DEPLOYMENT') == 'true':
+#     allowed_hosts = os.getenv('ALLOWED_HOSTS', '')
+#     ALLOWED_HOSTS = [host.strip() for host in allowed_hosts.split(',') if host]
+# else:
+#     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
