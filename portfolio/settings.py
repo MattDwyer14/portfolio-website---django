@@ -19,12 +19,18 @@ if os.getenv('AZURE_DEPLOYMENT') == 'true':
 else:
     DEBUG = True  # Enable debug in development
 
+ALLOWED_HOSTS = [
+    'mattsportfolio-fheabeb7btdaambd.uksouth-01.azurewebsites.net',
+    'mattdwyer.xyz',
+    'www.mattdwyer.xyz'
+]
+
 # ALLOWED_HOSTS toggle based on environment
-if os.getenv('AZURE_DEPLOYMENT') == 'true':
-    allowed_hosts = os.getenv('ALLOWED_HOSTS', '')
-    ALLOWED_HOSTS = [host.strip() for host in allowed_hosts.split(',') if host]
-else:
-    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+# if os.getenv('AZURE_DEPLOYMENT') == 'true':
+#     allowed_hosts = os.getenv('ALLOWED_HOSTS', '')
+#     ALLOWED_HOSTS = [host.strip() for host in allowed_hosts.split(',') if host]
+# else:
+#     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -74,12 +80,27 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
+if os.getenv('AZURE_DEPLOYMENT') == 'true':
+    # Use PostgreSQL on Azure in production
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'HOST': os.getenv('DB_HOST'),
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('DB_PASSWORD'),
+            'PORT': os.getenv('DB_PORT', '5432'),
+        }
+    }
+else:
+    # Use SQLite in development
+    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+
 
 
 # Password validation
