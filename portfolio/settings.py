@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import logging
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,13 +26,12 @@ else:
 #     'www.mattdwyer.xyz'
 # ]
 
-#ALLOWED_HOSTS toggle based on environment
 if os.getenv('AZURE_DEPLOYMENT') == 'true':
-    #allowed_hosts = os.getenv('ALLOWED_HOSTS', '')
-    ALLOWED_HOSTS =os.getenv('ALLOWED_HOSTS')
-    #= [host.strip() for host in allowed_hosts.split(',') if host]
+    allowed_hosts = os.getenv('ALLOWED_HOSTS', '')
+    ALLOWED_HOSTS = [host.strip() for host in allowed_hosts.split(',') if host]
 else:
-     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
 
 
 # Application definition
@@ -193,6 +193,9 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
 
-print("AZURE_DEPLOYMENT:", os.getenv('AZURE_DEPLOYMENT'))
-print("ALLOWED_HOSTS ENV VALUE:", os.getenv('ALLOWED_HOSTS'))
+logging.basicConfig(level=logging.INFO)
+logging.info(f"SECRET_KEY: {SECRET_KEY}")
+logging.info(f"DEBUG: {DEBUG}")
+logging.info(f"ALLOWED_HOSTS: {ALLOWED_HOSTS}")
+
 
