@@ -139,15 +139,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 if os.getenv('AZURE_DEPLOYMENT') == 'true':
-    # Use Azure Storage for static files
     DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
     STATICFILES_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-
-    # Azure Blob Storage settings
     AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME')  # Storage account name
     AZURE_ACCOUNT_KEY = os.getenv('AZURE_ACCOUNT_KEY')    # Storage account key
     AZURE_CONTAINER = os.getenv('AZURE_CONTAINER')        # Container name (e.g., 'static')
     STATIC_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINER}/"
+
 else:
     # Development (local static files)
     STATIC_URL = '/static/'
