@@ -28,7 +28,7 @@ else:
 
 if os.getenv('AZURE_DEPLOYMENT') == 'true':
     allowed_hosts = os.getenv('ALLOWED_HOSTS', '')
-    ALLOWED_HOSTS = [host.strip() for host in allowed_hosts.split(',') if host]
+    ALLOWED_HOSTS = ['*'] #[host.strip() for host in allowed_hosts.split(',') if host]
 else:
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
@@ -178,12 +178,12 @@ DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST')
 
 #SECURITY SETTINGS
 
-# if os.getenv('AZURE_DEPLOYMENT') == 'true':
-#     # Production: Fetch from environment variables
-#     SECURE_SSL_REDIRECT = True
-# else:
-#     # Development: Allow local requests
-SECURE_SSL_REDIRECT = False
+if os.getenv('AZURE_DEPLOYMENT') == 'true':
+    # Production: Fetch from environment variables
+    SECURE_SSL_REDIRECT = True
+else:
+    # Development: Allow local requests
+    SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 31536000  # 1 year
