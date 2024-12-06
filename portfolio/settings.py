@@ -30,7 +30,7 @@ if os.getenv('AZURE_DEPLOYMENT') == 'true':
     allowed_hosts = os.getenv('ALLOWED_HOSTS', '')
     ALLOWED_HOSTS = ['*'] #[host.strip() for host in allowed_hosts.split(',') if host]
 else:
-    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mattsportfolio-fheabeb7btdaambd.uksouth-01.azurewebsites.net']
 
 
 
