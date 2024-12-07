@@ -1,5 +1,4 @@
 from pathlib import Path
-from azure.identity import DefaultAzureCredential
 import os
 from dotenv import load_dotenv
 import logging
@@ -99,14 +98,33 @@ USE_TZ = True
 # Static files configuration
 if AZURE_DEPLOYMENT:
     # Production: Azure Storage
-    DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-    STATICFILES_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-    AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME')  # Storage account name
-    AZURE_ACCOUNT_KEY = os.getenv('AZURE_ACCOUNT_KEY')    # Storage account key
-    AZURE_CONTAINER = os.getenv('AZURE_CONTAINER')        # Container name (e.g., 'static')
-    STATIC_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINER}/"
 
-    # No STATIC_ROOT needed here because Azure storage is handling static files.
+    STORAGES = {
+        "default": {
+            "BACKEND": "storages.backends.azure_storage.AzureStorage",
+            "OPTIONS": {
+                "token_credential": credential,   # If using Managed Identity
+                "account_name": os.getenv('AZURE_ACCOUNT_NAME'),
+                "azure_container": os.getenv('AZURE_MEDIA_CONTAINER', 'media'),
+            },
+        },
+        "staticfiles": {
+            "BACKEND": "storages.backends.azure_storage.AzureStorage",
+            "OPTIONS": {
+                "token_credential": credential,   # If using Managed Identity
+                "account_name": os.getenv('AZURE_ACCOUNT_NAME'),
+                "azure_container": os.getenv('AZURE_CONTAINER', 'static'),
+            },
+        },
+    }
+
+    # Set URLs based on the storage settings
+    # If using Managed Identity and a public container, you can directly access them via a custom domain if set
+    STATIC_URL = f"https://{os.getenv('AZURE_ACCOUNT_NAME')}.blob.core.windows.net/{os.getenv('AZURE_CONTAINER', 'static')}/"
+    MEDIA_URL = f"https://{os.getenv('AZURE_ACCOUNT_NAME')}.blob.core.windows.net/{os.getenv('AZURE_MEDIA_CONTAINER', 'media')}/"
+
+
+
 else:
     # Development (local static files)
     STATIC_URL = '/static/'
