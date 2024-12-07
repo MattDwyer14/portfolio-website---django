@@ -35,6 +35,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -94,18 +95,26 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Use Azure Blob Storage for static files in all environments
-DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-STATICFILES_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+# Static files configuration
+if AZURE_DEPLOYMENT:
+    # Production: Azure Storage
+    DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+    STATICFILES_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+    AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME')  # Storage account name
+    AZURE_ACCOUNT_KEY = os.getenv('AZURE_ACCOUNT_KEY')    # Storage account key
+    AZURE_CONTAINER = os.getenv('AZURE_CONTAINER')        # Container name (e.g., 'static')
+    STATIC_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINER}/"
 
-AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME')
-AZURE_ACCOUNT_KEY = os.getenv('AZURE_ACCOUNT_KEY')
-AZURE_CONTAINER = os.getenv('AZURE_CONTAINER', 'static')  # Default to 'static' if not set
+    # No STATIC_ROOT needed here because Azure storage is handling static files.
+else:
+    # Development (local static files)
+    STATIC_URL = '/static/'
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
+    STATICFILES_DIRS = [
+        BASE_DIR / 'core/static/core',
+        BASE_DIR / 'projects/static/projects',
+    ]
 
-STATIC_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINER}/"
-
-# Even though we're using Azure storage, define STATIC_ROOT to avoid ImproperlyConfigured error.
-STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
