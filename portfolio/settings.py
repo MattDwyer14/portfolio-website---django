@@ -103,7 +103,6 @@ if AZURE_DEPLOYMENT:
         "default": {
             "BACKEND": "storages.backends.azure_storage.AzureStorage",
             "OPTIONS": {
-                "token_credential": credential,   # If using Managed Identity
                 "account_name": os.getenv('AZURE_ACCOUNT_NAME'),
                 "azure_container": os.getenv('AZURE_MEDIA_CONTAINER', 'media'),
             },
@@ -111,7 +110,6 @@ if AZURE_DEPLOYMENT:
         "staticfiles": {
             "BACKEND": "storages.backends.azure_storage.AzureStorage",
             "OPTIONS": {
-                "token_credential": credential,   # If using Managed Identity
                 "account_name": os.getenv('AZURE_ACCOUNT_NAME'),
                 "azure_container": os.getenv('AZURE_CONTAINER', 'static'),
             },
