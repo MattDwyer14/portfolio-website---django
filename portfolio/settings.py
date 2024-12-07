@@ -105,7 +105,7 @@ if AZURE_DEPLOYMENT:
             "OPTIONS": {
                 "account_name": os.getenv('AZURE_ACCOUNT_NAME'),
                 "account_key": os.getenv('AZURE_ACCOUNT_KEY'),
-                "azure_container": os.getenv('AZURE_MEDIA_CONTAINER', 'media'),
+                "azure_container": "portfoliomedia"  # Media files here
             },
         },
         "staticfiles": {
@@ -113,7 +113,7 @@ if AZURE_DEPLOYMENT:
             "OPTIONS": {
                 "account_name": os.getenv('AZURE_ACCOUNT_NAME'),
                 "account_key": os.getenv('AZURE_ACCOUNT_KEY'),
-                "azure_container": os.getenv('AZURE_CONTAINER', 'static'),
+                "azure_container": "portfoliostatic"  # Static files here
             },
         },
     }
