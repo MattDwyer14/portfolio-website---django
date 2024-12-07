@@ -1,4 +1,5 @@
 from pathlib import Path
+from azure.identity import DefaultAzureCredential
 import os
 from dotenv import load_dotenv
 import logging
