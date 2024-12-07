@@ -104,6 +104,7 @@ if AZURE_DEPLOYMENT:
             "BACKEND": "storages.backends.azure_storage.AzureStorage",
             "OPTIONS": {
                 "account_name": os.getenv('AZURE_ACCOUNT_NAME'),
+                "account_key": os.getenv('AZURE_ACCOUNT_KEY'),
                 "azure_container": os.getenv('AZURE_MEDIA_CONTAINER', 'media'),
             },
         },
@@ -111,6 +112,7 @@ if AZURE_DEPLOYMENT:
             "BACKEND": "storages.backends.azure_storage.AzureStorage",
             "OPTIONS": {
                 "account_name": os.getenv('AZURE_ACCOUNT_NAME'),
+                "account_key": os.getenv('AZURE_ACCOUNT_KEY'),
                 "azure_container": os.getenv('AZURE_CONTAINER', 'static'),
             },
         },
