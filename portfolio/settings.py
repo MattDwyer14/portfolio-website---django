@@ -17,12 +17,16 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 if AZURE_DEPLOYMENT:
     DEBUG = True
-    ALLOWED_HOSTS = ['*']
-    # Use ALLOWED_HOSTS to set CSRF_TRUSTED_ORIGINS
-    CSRF_TRUSTED_ORIGINS = [f'https://{host}' for host in ALLOWED_HOSTS]
+    # Load ALLOWED_HOSTS from environment variable and ensure it's a list
+    ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
+    # Ensure that CSRF_TRUSTED_ORIGINS is correctly populated based on ALLOWED_HOSTS
+    CSRF_TRUSTED_ORIGINS = [f'https://{host.strip()}' for host in ALLOWED_HOSTS if host.strip()]
+    
 else:
     DEBUG = True
-    ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mattsportfolio-fheabeb7btdaambd.uksouth-01.azurewebsites.net']
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+    CSRF_TRUSTED_ORIGINS = []
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
