@@ -19,15 +19,16 @@ def contact(request):
             contact_message = form.save()
 
             # Send email
-            subject = f"New Contact Form Submission: {contact_message.name}"
+            subject = f"Web Message from {contact_message.name}"
             message = f"""
-            You have a new message from {contact_message.name} {contact_message.email}:
+Email: {contact_message.email}
+Reason: {contact_message.reason}
+Message: {contact_message.message}
 
-            Reason: {contact_message.reason}
-            Message: {contact_message.message}
+{contact_message.name}
             """
             from_email = os.getenv('EMAIL_HOST_USER')
-            recipient_list = os.getenv('EMAIL_HOST_USER')
+            recipient_list = os.getenv('EMAIL_RECIPIENT')
 
             send_mail(subject, message, from_email, [recipient_list])
 
