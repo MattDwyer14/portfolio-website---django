@@ -6,11 +6,11 @@
     --hover-color: #2980b9;
     --font-main: "Lucida Console", Monaco, monospace;
     --padding: 10px;
-    --main-heading: 1.6vw;
-    --nav-link-size: 1.2vw;
-    --page-heading: 1.3vw;
-    --sub-heading: 1.3vw;
-    --paragraph: 1vw;
+    --main-heading: 22px;
+    --nav-link-size: 18px;
+    --page-heading: 19px;
+    --sub-heading: 15px;
+    --paragraph: 13px;
 }
 
 * {
@@ -19,7 +19,11 @@
     box-sizing: border-box;
 }
 
-h2{
+h1 {
+    font-size: var(--main-heading);
+}
+
+h2 {
     font-size: var(--page-heading);
 }
 
@@ -83,7 +87,7 @@ li {
     color: var(--font-color);
     padding: 5px 10px;
     border-radius: 8px;
-    font-size: var(--nav-link-size);
+    font-size: 19px !important;
 }
 
 .nav-link a:hover {
@@ -102,9 +106,10 @@ body {
     font-family: var(--font-main);
     background-color: var(--background-color);
     color: var(--font-color);
-    line-height: 1.6;
     padding: 30px;
 }   
+
+/* home content */
 
 .home-content {
     display: flex;
@@ -178,6 +183,8 @@ form {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
+    font-family: var(--font-main);
+    font-size: 15;
     background-color: var(--primary-color);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -190,7 +197,7 @@ input, select, textarea {
     border: 5px solid #ccc;
     border-radius: 5px;
     font-family: "Lucida Console", Monaco, monospace;
-    font: var(--font-color);
+    color: var(--font-color);
     box-sizing: border-box;
 }
 
@@ -198,16 +205,16 @@ input:focus, select:focus, textarea:focus {
     outline: none;
     border-color: var(--hover-color); 
     box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
-    font: var(--font-color);
-    font-size: 18px;
+    color: var(--font-color);
+    font-size: 500px !important;
 }
 
 label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    font-size: 22px;
-    font: var(--font-color);
+    font-size: var(--main-heading);
+    color: var(--font-color);
 }
 
 button {
@@ -217,8 +224,8 @@ button {
     padding: 5px 20px;
     margin-top: 5px;
     border-radius: 5px;
-    font: var(--font-color);
-    font-size: 20px;
+    color: var(--font-color);
+    font-size: var(--main-heading);
     cursor: pointer;
 }
 
@@ -283,19 +290,7 @@ footer {
     .text-content {
         width: 100%;
         max-width: none;
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 20px;
-    }
-    
-    h2 {
-        font-size: 15px;
-    }
-    
-    p {
-        font-size: 14px;
+        padding: 10px;
     }
 
     form {
