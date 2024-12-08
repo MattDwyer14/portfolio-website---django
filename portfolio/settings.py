@@ -18,6 +18,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 if AZURE_DEPLOYMENT:
     DEBUG = False
     ALLOWED_HOSTS = ['*']
+    CSRF_TRUSTED_ORIGINS = ['mattsportfolio-fheabeb7btdaambd.uksouth-01.azurewebsites.net']
 else:
     DEBUG = True
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mattsportfolio-fheabeb7btdaambd.uksouth-01.azurewebsites.net']
