@@ -18,7 +18,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 if AZURE_DEPLOYMENT:
     DEBUG = False
     ALLOWED_HOSTS = ['*']
-    CSRF_TRUSTED_ORIGINS = ['https://'+ os.environ['WEBSITE_HOSTNAME']]
+    # Use ALLOWED_HOSTS to set CSRF_TRUSTED_ORIGINS
+    CSRF_TRUSTED_ORIGINS = [f'https://{host}' for host in ALLOWED_HOSTS]
 else:
     DEBUG = True
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mattsportfolio-fheabeb7btdaambd.uksouth-01.azurewebsites.net']
