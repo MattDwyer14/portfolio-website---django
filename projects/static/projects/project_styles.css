@@ -7,10 +7,10 @@
     --font-main: "Lucida Console", Monaco, monospace;
     --padding: 10px;
     --main-heading: 22px;
-    --nav-link-size: 18px;
-    --page-heading: 19px;
-    --sub-heading: 15px;
-    --paragraph: 13px;
+    --nav-link-size: 22px;
+    --page-heading: 22px;
+    --sub-heading: 19px;
+    --paragraph: 16px;
 }
 
 * {
@@ -87,7 +87,7 @@ li {
     color: var(--font-color);
     padding: 5px 10px;
     border-radius: 8px;
-    font-size: var(--nav-link-size);
+    font-size: 19px !important;
 }
 
 .nav-link a:hover {
@@ -317,4 +317,20 @@ footer {
     .projects-grid {
         padding: 5px;
     }
+
+    .project-detail img {
+        width: 100% !important;
+    }
+
+    main {
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 8px;
+    }
+    
+    body {
+        
+        padding: 20px;
+    } 
+
 }
