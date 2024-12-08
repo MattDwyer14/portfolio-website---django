@@ -14,12 +14,12 @@ if not AZURE_DEPLOYMENT:
         load_dotenv(dotenv_path)
 
 SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = True
+
 if AZURE_DEPLOYMENT:
-    
+    DEBUG = False
     ALLOWED_HOSTS = ['*']
 else:
-    #DEBUG = True
+    DEBUG = True
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mattsportfolio-fheabeb7btdaambd.uksouth-01.azurewebsites.net']
 
 INSTALLED_APPS = [
@@ -55,6 +55,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.csrf',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
