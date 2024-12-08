@@ -7,10 +7,10 @@
     --font-main: "Lucida Console", Monaco, monospace;
     --padding: 10px;
     --main-heading: 22px;
-    --nav-link-size: 18px;
-    --page-heading: 19px;
-    --sub-heading: 15px;
-    --paragraph: 13px;
+    --nav-link-size: 22px;
+    --page-heading: 22px;
+    --sub-heading: 19px;
+    --paragraph: 16px;
 }
 
 * {
@@ -106,6 +106,7 @@ body {
     font-family: var(--font-main);
     background-color: var(--background-color);
     color: var(--font-color);
+    line-height: 1.6;
     padding: 30px;
 }   
 
@@ -270,7 +271,7 @@ footer {
     }
 
     .home-image {
-        max-width: 150px;
+        max-width: 300px;
     }
 
     .home-text-container {
@@ -296,4 +297,15 @@ footer {
     form {
         width: 100%;
     }
+
+    main {
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 8px;
+    }
+    
+    body {
+        
+        padding: 20px;
+    }   
 }
