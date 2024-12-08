@@ -197,8 +197,7 @@ input, select, textarea {
     margin: 10px 0;
     border: 5px solid #ccc;
     border-radius: 5px;
-    font-family: "Lucida Console", Monaco, monospace;
-    color: var(--font-color);
+    font-family: var(--font-main);
     box-sizing: border-box;
 }
 
@@ -206,8 +205,6 @@ input:focus, select:focus, textarea:focus {
     outline: none;
     border-color: var(--hover-color); 
     box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
-    color: var(--font-color);
-    font-size: 500px !important;
 }
 
 label {
@@ -215,12 +212,10 @@ label {
     margin-bottom: 5px;
     font-weight: bold;
     font-size: var(--main-heading);
-    color: var(--font-color);
 }
 
 button {
     background-color: var(--secondary-color);
-    color: var(--font-color);
     border: none;
     padding: 5px 20px;
     margin-top: 5px;
