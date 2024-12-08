@@ -16,7 +16,7 @@ if not AZURE_DEPLOYMENT:
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 if AZURE_DEPLOYMENT:
-    DEBUG = False
+    DEBUG = True
     ALLOWED_HOSTS = ['*']
     # Use ALLOWED_HOSTS to set CSRF_TRUSTED_ORIGINS
     CSRF_TRUSTED_ORIGINS = [f'https://{host}' for host in ALLOWED_HOSTS]
