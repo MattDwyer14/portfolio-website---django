@@ -18,7 +18,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 if AZURE_DEPLOYMENT:
     DEBUG = False
     ALLOWED_HOSTS = ['*']
-    CSRF_TRUSTED_ORIGINS = ['mattsportfolio-fheabeb7btdaambd.uksouth-01.azurewebsites.net']
+    CSRF_TRUSTED_ORIGINS = ['https://'+ os.environ['WEBSITE_HOSTNAME']]
 else:
     DEBUG = True
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mattsportfolio-fheabeb7btdaambd.uksouth-01.azurewebsites.net']
@@ -38,8 +38,8 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -156,8 +156,3 @@ CSRF_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
-
-logging.basicConfig(level=logging.INFO)
-logging.info(f"SECRET_KEY: {SECRET_KEY}")
-logging.info(f"DEBUG: {DEBUG}")
-logging.info(f"ALLOWED_HOSTS: {ALLOWED_HOSTS}")
