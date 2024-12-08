@@ -20,16 +20,4 @@
         </div>
     </div>
 </div>
-<footer>
-    <div class="container">
-        <p>&copy; <span id="year"></span> Matthew Dwyer</p>
-    </div>
-</footer>
-<script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    function toggleNav() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('show');
-        }
-</script>
 {% endblock %}

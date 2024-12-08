@@ -6,11 +6,11 @@
     --hover-color: #2980b9;
     --font-main: "Lucida Console", Monaco, monospace;
     --padding: 10px;
-    --main-heading: 22px;
-    --nav-link-size: 22px;
-    --page-heading: 22px;
-    --sub-heading: 19px;
-    --paragraph: 16px;
+    --main-heading: 23px;
+    --nav-link-size: 23px;
+    --page-heading: 23px;
+    --sub-heading: 20px;
+    --paragraph: 19px;
 }
 
 * {
@@ -92,6 +92,8 @@ li {
 
 .nav-link a:hover {
     background-color: var(--hover-color);
+    transform: scale(1.05);
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 main {
@@ -187,6 +189,14 @@ body {
 
 .project-detail a:hover {
     background-color: var(--hover-color);
+    transform: scale(1.05);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.project-description-main a:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .project-description-main {

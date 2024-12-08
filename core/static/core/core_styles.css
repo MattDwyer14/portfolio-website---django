@@ -6,11 +6,11 @@
     --hover-color: #2980b9;
     --font-main: "Lucida Console", Monaco, monospace;
     --padding: 10px;
-    --main-heading: 22px;
-    --nav-link-size: 22px;
-    --page-heading: 22px;
-    --sub-heading: 19px;
-    --paragraph: 16px;
+    --main-heading: 23px;
+    --nav-link-size: 23px;
+    --page-heading: 23px;
+    --sub-heading: 20px;
+    --paragraph: 19px;
 }
 
 * {
@@ -92,6 +92,8 @@ li {
 
 .nav-link a:hover {
     background-color: var(--hover-color);
+    transform: scale(1.05);
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 main {
@@ -185,7 +187,7 @@ form {
     margin: 0 auto;
     padding: 20px;
     font-family: var(--font-main);
-    font-size: 15;
+    font-size: var(--paragraph);
     background-color: var(--primary-color);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -198,6 +200,7 @@ input, select, textarea {
     border: 5px solid #ccc;
     border-radius: 5px;
     font-family: var(--font-main);
+    font-size: var(--paragraph);
     box-sizing: border-box;
 }
 
@@ -223,6 +226,8 @@ button {
     color: var(--font-color);
     font-size: var(--main-heading);
     cursor: pointer;
+    transform: scale(1.05);
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 button:hover {
