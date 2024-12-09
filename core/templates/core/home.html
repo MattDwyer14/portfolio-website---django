@@ -10,7 +10,7 @@
         <h2>About Me</h2>
         {% for text in content %}
             <article>
-                <p>{{ text.body|linebreaks }}</p>
+                <p>{{ text.body|linebreaksbr }}</p>
             </article>
         {% endfor %}
     </div>
