@@ -2,6 +2,8 @@ from django import forms
 from .models import contactMessage
 
 class contact_form(forms.ModelForm):
+    honeypot = forms.CharField(required=False, widget=forms.HiddenInput())
+
     class Meta:
         model = contactMessage
         fields = ['name', 'reason', 'email', 'message']

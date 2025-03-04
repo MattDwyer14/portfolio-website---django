@@ -15,6 +15,12 @@ def education(request):
 def contact(request):
     if request.method == 'POST':
         form = contact_form(request.POST)
+
+        # Honeypot validation
+        if form.data.get('honeypot'):  # If the field has data, it's likely a bot
+            messages.error(request, "Bot detected. Submission blocked.")
+            return redirect('contact')
+
         if form.is_valid():
             contact_message = form.save()
 
@@ -32,7 +38,7 @@ Message: {contact_message.message}
 
             send_mail(subject, message, from_email, [recipient_list])
 
-            messages.success(request, 'I\'ve recieved your message!')
+            messages.success(request, "I've received your message!")
             return redirect('contact')
     else:
         form = contact_form()
