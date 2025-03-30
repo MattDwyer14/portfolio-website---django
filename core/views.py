@@ -16,9 +16,27 @@ def contact(request):
     if request.method == 'POST':
         form = contact_form(request.POST)
 
-        # Honeypot validation
-        if form.data.get('honeypot'):  # If the field has data, it's likely a bot
+        # Honeypot field validation (renamed to 'contact_website')
+        if request.POST.get('contact_website'):
             messages.error(request, "Bot detected. Submission blocked.")
+            return redirect('contact')
+
+        # Check for fast form submission (timestamp field)
+        timestamp_str = request.POST.get('timestamp')
+        if timestamp_str:
+            try:
+                form_time = datetime.fromisoformat(timestamp_str)
+                if (datetime.now() - form_time).total_seconds() < 3:
+                    messages.error(request, "Submission too fast. Bot suspected.")
+                    return redirect('contact')
+            except ValueError:
+                pass  # Invalid timestamp, skip this check
+
+        # Extra keyword filtering (e.g., 'phoff')
+        name = request.POST.get('name', '').lower()
+        message_content = request.POST.get('message', '').lower()
+        if 'phoff' in name or 'phoff' in message_content:
+            messages.error(request, "Spam detected in content.")
             return redirect('contact')
 
         if form.is_valid():
@@ -43,4 +61,5 @@ Message: {contact_message.message}
     else:
         form = contact_form()
 
-    return render(request, 'core/contact.html', {'form': form})
+    timestamp = datetime.now().isoformat()
+    return render(request, 'core/contact.html', {'form': form, 'timestamp': timestamp})

@@ -8,13 +8,18 @@
     <div class="contact-container">
         <form method="POST" action="">
             {% csrf_token %}
-            
-            <!-- Honeypot field: This is hidden for users but visible for bots -->
+
+            <!-- Honeypot field with misleading label -->
             <div style="display: none;">
-                {{ form.honeypot }}
+                <label for="contact_website">Website</label>
+                <input type="text" id="contact_website" name="contact_website">
             </div>
 
+            <!-- Timestamp hidden field for anti-spam -->
+            <input type="hidden" name="timestamp" value="{{ timestamp }}">
+
             {{ form.as_p }}
+
             <button type="submit">Send</button>
         </form>
     </div>
