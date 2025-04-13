@@ -4,6 +4,8 @@ import os
 from django.contrib import messages
 from .forms import contact_form
 from .models import HomePageContent
+from datetime import datetime
+
 
 def home(request):
     content = HomePageContent.objects.all()
